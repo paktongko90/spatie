@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*Route::get('/', function () {
+    return view('auth.login');
+});*/
+Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 
 Auth::routes();
 
@@ -23,3 +24,4 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
 });
+Route::get('/admin', 'AdminController@index');
